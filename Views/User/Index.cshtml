@@ -1,0 +1,75 @@
+@model List<CrudGitFlowApp.Models.User>
+
+<style id="0y0iy6">
+.fade-in {
+    animation: fadeIn 0.6s ease-in-out;
+}
+
+@@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px);}
+    to { opacity: 1; transform: translateY(0);}
+}
+</style>
+
+<div class="container mt-5 fade-in">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold">Gestión de Usuarios</h2>
+        <a href="/User/Create" class="btn btn-primary">+ Nuevo Usuario</a>
+    </div>
+
+    <div class="card shadow">
+        <div class="card-body">
+		<input type="text" id="search" class="form-control mb-3" placeholder="Buscar usuario...">
+            <table class="table table-hover table-bordered align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Email</th>
+                        <th class="text-center">Acciones</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @if (Model.Count == 0)
+                {
+                    <tr>
+                        <td colspan="3" class="text-center text-muted">No hay usuarios registrados</td>
+                    </tr>
+                }
+                else
+                {
+                    @foreach (var user in Model)
+                    {
+                        <tr>
+                            <td>@user.Name</td>
+                            <td>@user.Email</td>
+                            <td class="text-center">
+                                <a href="/User/Edit/@user.Id" class="btn btn-warning btn-sm">
+									✏️ Editar
+								</a>
+								
+                                <a href="/User/Delete/@user.Id" 
+								   class="btn btn-danger 
+								   onclick="return confirm('⚠️ Esta acción no se puede deshacer. ¿Eliminar usuario?')">
+								   🗑 Eliminar
+								</a>   
+                            </td>
+                        </tr>
+                    }
+                }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script id="7ayxtn">
+document.getElementById("search").addEventListener("keyup", function () {
+    let filter = this.value.toLowerCase();
+    let rows = document.querySelectorAll("tbody tr");
+
+    rows.forEach(row => {
+        let text = row.innerText.toLowerCase();
+        row.style.display = text.includes(filter) ? "" : "none";
+    });
+});
+</script>

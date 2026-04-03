@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v9.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v9.0": {
+      "CrudGitFlowApp/1.0.0": {
+        "runtime": {
+          "CrudGitFlowApp.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "CrudGitFlowApp/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}
